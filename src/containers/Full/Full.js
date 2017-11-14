@@ -11,6 +11,7 @@ import Charts from '../../views/Charts/';
 import Widgets from '../../views/Widgets/';
 
 import Players from '../../views/Players/';
+import Player from '../../views/Player';
 
 // Components
 import Buttons from '../../views/Components/Buttons/';
@@ -57,6 +58,7 @@ class Full extends Component {
               <Switch>
                 <Route path="/dashboard" name="Dashboard" component={Dashboard}/>
                 <Route path="/players" name="Players" component={Players} />
+                <Route path="/players/:playerId" name="Player" component={Player} />
                 <Route path="/components/buttons" name="Buttons" component={Buttons}/>
                 <Route path="/components/cards" name="Cards" component={Cards}/>
                 <Route path="/components/modals" name="Modals" component={Modals}/>

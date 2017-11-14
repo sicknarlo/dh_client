@@ -11,6 +11,7 @@ import {
   PaginationItem,
   PaginationLink
 } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 
 class Players extends Component {
@@ -40,16 +41,16 @@ class Players extends Component {
                 <Table responsive hover>
                   <thead>
                     <tr>
-                      <th>Name <i class="fa fa-sort"></i></th>
-                      <th>Team <i class="fa fa-sort"></i></th>
-                      <th>Position <i class="fa fa-sort"></i></th>
+                      <th>Name <i className="fa fa-sort"></i></th>
+                      <th>Team <i className="fa fa-sort"></i></th>
+                      <th>Position <i className="fa fa-sort"></i></th>
                     </tr>
                   </thead>
                   <tbody>
                   {this.state.players.map(p => {
                     return (
                       <tr>
-                        <td>{p.name}</td>
+                        <td><Link to={`/players/${p._id}`}>{p.name}</Link></td>
                         <td>{p.team}</td>
                         <td>{p.position}</td>
                       </tr>
