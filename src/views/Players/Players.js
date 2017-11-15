@@ -12,6 +12,7 @@ import {
   PaginationLink
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import Loader from '../../components/Loader';
 
 
 class Players extends Component {
@@ -20,16 +21,21 @@ class Players extends Component {
     this.state = {
       sortColumn: 'name',
       sortDirection: 'asc',
-      players: []
+      players: [],
+      loading: true,
     };
   }
   componentDidMount() {
     fetch("http://localhost:4040/api/player")
       .then(response => response.json())
-      .then(players => this.setState({ players }));
+      .then(players => this.setState({
+        players,
+        loading: false,
+      }));
   }
 
   render() {
+    if (this.state.loading) return <Loader />;
     return (
       <div className="animated fadeIn">
         <Row>
