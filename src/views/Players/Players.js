@@ -48,7 +48,10 @@ class Players extends Component {
     const sortedFilteredPlayers =
       this.state.filters.length === 0
         ? sortedPlayers
-        : sortedPlayers.filter(player => this.state.filters.includes(player.position));
+        : sortedPlayers.filter(player =>
+            this.state.filters.includes(player.position)
+          );
+    // const limitedSortedFilteredPlayers = sortedFilteredPlayers.slice(this.state.;
     console.log(this.props.atom);
     return (
       <div className="animated fadeIn">

@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { Container } from 'reactstrap';
+import { connect } from 'react-redux';
+import { history } from '../../helpers';
+import { alertActions } from '../../actions';
+
 import Header from '../../components/Header/';
 import Sidebar from '../../components/Sidebar/';
 import Breadcrumb from '../../components/Breadcrumb/';
@@ -48,12 +52,15 @@ import Compose from '../../views/UI-Kits/Email/Compose/';
 class Full extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      user: null,
-      format: 'ppr',
-    };
+
+    const { dispatch } = this.props;
+    history.listen((location, action) => {
+      // clear alert on location change
+      dispatch(alertActions.clear());
+    });
   }
   render() {
+    const { alert } = this.props;
     return (
       <div className="app">
         <Header />
@@ -184,4 +191,12 @@ class Full extends Component {
   }
 }
 
-export default Full;
+function mapStateToProps(state) {
+  const { alert } = state;
+  console.log(state)
+  return {
+    alert
+  };
+}
+
+export default connect(mapStateToProps)(Full);
